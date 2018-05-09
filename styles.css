@@ -1,0 +1,16 @@
+body {
+  padding: 100px;
+}
+
+.big {
+  font-size: 36px;
+}
+
+.phones li {
+  font-size: 18px;
+  padding: 6px;
+  margin: 4px;
+  list-style: none;
+  border: 2px solid lightgray;
+  box-shadow: 2px 2px 1px rgba(50, 50, 50, 0.75);
+}
