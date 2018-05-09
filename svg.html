@@ -12,14 +12,29 @@
 
 <body>
     <h1>SVG Shapes</h1>
-    <svg width="500" height="500" style="background: lightgray; stroke:rgb(0,0,0); stroke-width: 8">
-        <rect width="300" height="300" x="50" y="50" style="
+    <svg width="500" height="500" style="background: lightgray;">
+        <rect width="300" height="300" x="100" y="100" style="
         fill:red;stroke:slateblue;stroke-width:8
         "></rect>
     </svg>
-    <svg width="500" height="500" style="background: lightgray; stroke:rgb(0,0,0); stroke-width: 8">
-        <circle cx="250" cy="250" r="40" stroke="tomato" stroke-width="2" fill="yellow"></circle>
+    <svg width="500" height="500" style="background: lightgray; ">
+        <circle cx="250" cy="250" r="40" stroke="tomato" stroke-width="8" fill="yellow"></circle>
     </svg>
+    <script>
+        d3.select("body")
+            .append("svg")
+            .attr("width", 500)
+            .attr("height", 500)
+            .style("background", "lightgray")
+            .append("rect")
+            .attr("width", 300)
+            .attr("height", 300)
+            .style("fill", "orange")
+            .style("stroke-width", 8)
+            .style("stroke", "forestgreen")
+            .attr("x", "100")
+            .attr("y", "100")
+    </script>
 </body>
 
 </html>
