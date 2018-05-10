@@ -20,6 +20,17 @@
         const height = 550;
         const width = 550;
 
+        const animateDuration = 700;
+        const animateDelay = 30;
+
+        const tooltip = d3.select("body").append("div")
+            .style("position", "absolute")
+            .style("background", "lightgray")
+            .style("padding", "5 15px")
+            .style("border", "1px darkgray solid")
+            .style("border-radius", "5px")
+            .style("opacity", "0")
+
         const yScale = d3.scale.linear()
             .domain([0, d3.max(myData)])
             .range([0, height - 15])
@@ -32,7 +43,7 @@
             .domain([0, myData.length])
             .range(["blue", "red"])
 
-        d3.select("#chart")
+        const myChart = d3.select("#chart")
             .append("svg")
             .attr("width", width)
             .attr("height", height)
@@ -42,9 +53,29 @@
             .enter().append("rect")
             .style("fill", (d, i) => colors(i))
             .attr("width", xScale.rangeBand())
-            .attr("height", (d) => yScale(d))
+            .attr("height", 0)
             .attr("x", (d, i) => xScale(i))
+            .attr("y", height)
+            .on("mouseover", (d) => {
+                tooltip.transition()
+                    .style("opacity", 1);
+                tooltip.html(d)
+                    .style("left", d3.event.pageX + "px")
+                    .style("top", d3.event.pageY + "px");
+                d3.select().style("opacity", 0.5);
+            }
+            )
+            .on("mouseout", (d) => {
+                tooltip.transition().style("opacity", 0);
+                d3.select().style("opacity", 1);
+            })
+
+        myChart.transition()
+            .attr("height", (d) => yScale(d))
             .attr("y", (d) => height - yScale(d))
+            .duration(animateDuration)
+            .delay((d, i) => i * animateDelay)
+            .ease("elastic")
     </script>
 </body>
 
