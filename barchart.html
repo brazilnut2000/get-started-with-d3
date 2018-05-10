@@ -52,7 +52,7 @@
             .data(myData)
             .enter().append("rect")
             .style("fill", (d, i) => colors(i))
-            .attr("width", xScale.rangeBand())
+            .attr("width", xScale.rangeBand() - 10)
             .attr("height", 0)
             .attr("x", (d, i) => xScale(i))
             .attr("y", height)
